@@ -26,6 +26,22 @@ Nrow = pd.DataFrame(new_row)
 Ndf = pd.concat([df.iloc[:0], Nrow, df.iloc[0:]], ignore_index=True)
 Ndf = pd.concat([Nrow], ignore_index=True)
 
+#묶음
+###첫번째 행 ~ 마지막 행 판단
+"""ex)
+   x == None, o != None
+      x  첫번째 행 -> numS
+      o  -
+      o  -
+      o  마지막 행 -> numE
+      x  첫번째 행 -> numS
+      o  마지막 행 -> numE
+      x                      
+
+  repeat(numS=2):
+        """
+      
+
 def RP(l, col):
       numS = []
       numE = []
