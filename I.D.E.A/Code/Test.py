@@ -29,16 +29,20 @@ Ndf = pd.concat([Nrow], ignore_index=True)
 #묶음
 ###첫번째 행 ~ 마지막 행 판단
 """ex)
-   x == None, o != None
-      x  첫번째 행 -> numS
-      o  -
-      o  -
-      o  마지막 행 -> numE
-      x  첫번째 행 -> numS
-      o  마지막 행 -> numE
-      x                      
+     x == None, o != None
+      0 x  첫번째 행 -> numS
+      1 o  -
+      2 o  -
+      3 o  마지막 행 -> numE
+      4 x  첫번째 행 -> numS
+      5 o  마지막 행 -> numE
+      6 x                      
 
-  repeat(numS=2):
+  repeat(len(numS=2)):
+      Vnum = numE[b] - numS[b]
+                  3         0 = 3
+                  5         4 = 1
+            numR=[3, 1]
         """
       
 
