@@ -1,0 +1,72 @@
+rp(l, col)
+#묶음
+      ###첫번째 행 ~ 마지막 행 판단
+      ex)
+      x == None, o != None
+      0 x  첫번째 행 -> nums
+      1 o  -
+      2 o  -
+      3 o  마지막 행 -> nume
+      4 x  첫번째 행 -> nums
+      5 o  마지막 행 -> nume
+      6 x  -
+
+      nums=[0, 4], nume=[3, 5]\          
+      
+      ###항 개수 구하기
+      ex)
+      repeat(len(nums)=2):
+            Vnum = nume[b] - nums[b]
+                        3         0 = 3
+                        5         4 = 1
+            numr=[3, 1]
+
+      ###항 구하기 
+      ex)
+      repeat(len(numr)=2):
+      
+      1st
+      varl = 1
+      k = [1]
+      2 != 0:
+	
+            1st
+	      varl = 2
+	      k = [1, 2]
+	
+	      2nd
+	      varl = 3
+	      k = [1, 2, 3]
+
+      numu = [1, 2, 3]
+
+      2nd\n
+      varl = 5
+      k = [5]
+      0 == 0
+
+      numu = [[1, 2, 3,], [5]]
+
+#묶음행에 빈칸이 있는 경우 다음 묶음행 전까지 묶음행을 반복해서 넣기
+ex)
+      0 x  
+      1 o A
+      2 o B
+      3 o 
+      4 o   
+      5 o 
+      6 x 
+      7 o C
+      8 o
+      9 x
+
+  =>  0 x  
+      1 o A
+      2 o B
+      3 o A
+      4 o B  
+      5 o A
+      6 x 
+      7 o C
+      8 o C
+      9 x  

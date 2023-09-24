@@ -1,9 +1,3 @@
-"""a = ['구분', '유저', '챗봇', 'similarity']
-Output = ['구분', '유사한 질문', '챗봇 대답', '유사도']
-
-for i in range(4):
-      print(Output[i]+":", a[i]+"\n")"""
-      
 import pandas as pd
 from numpy import dot
 from numpy.linalg import norm
@@ -26,59 +20,43 @@ Nrow = pd.DataFrame(new_row)
 Ndf = pd.concat([df.iloc[:0], Nrow, df.iloc[0:]], ignore_index=True)
 Ndf = pd.concat([Nrow], ignore_index=True)
 
-#묶음
-###첫번째 행 ~ 마지막 행 판단
-"""ex)
-     x == None, o != None
-      0 x  첫번째 행 -> numS
-      1 o  -
-      2 o  -
-      3 o  마지막 행 -> numE
-      4 x  첫번째 행 -> numS
-      5 o  마지막 행 -> numE
-      6 x                      
-
-  repeat(len(numS=2)):
-      Vnum = numE[b] - numS[b]
-                  3         0 = 3
-                  5         4 = 1
-            numR=[3, 1]
-        """
+def rp(l, col):
+      nums = []
+      nume = []
+      numr = []
+      numu = []
       
-
-def RP(l, col):
-      numS = []
-      numE = []
-      numR = []
-      numU = []
-      
+      #항 묶음 구하기
       for a in range(len(l.index)):
             if (l[a][l.columns[col]] != None) & (l[a+1][l.columns[col]] == None):
-                  numS.append(a)
+                  nums.append(a)
                         
             if (l[a][l.columns[col]] == None) & (l[a+1][l.columns[col]] != None):
-                  numE.append(a)
-                        
-      for b in range(len(numS)):
-            Vnum = numE[b] - numS[b]
-            numR.append(Vnum)
+                  nume.append(a)
+
+      #항 개수 구하기               
+      for b in range(len(nums)):
+            Vnum = nume[b] - nums[b]
+            numr.append(Vnum)
             
-      for c in range(len(numR)):
+      #항 구하기
+      for c in range(len(numr)):
             k = []
-            varl = numS[i] + 1
+            varl = nums[c] + 1
             k.append(varl)
             
-            if numR[i] - 1 != 0:
-                  for x in range(numR[i] - 1):
+            if numr[c] - 1 != 0:
+                  for x in range(numr[c] - 1):
                         varl += 1
                         k.append(varl)
                         
-                  numU.append(k)
+            numu.append(k)
                   
-            return numU 
-      
+            return numu
+
+#묶음행에 빈칸이 있는 경우 다음 묶음행 전까지 묶음행을 반복해서 넣기
 for x in Ndf.columns:
-      repeat = RP(Ndf, [x])
+      repeat = rp(Ndf, [x])
       rpnum1 = 0
       
       for y in range(len(Ndf.index)):
@@ -92,7 +70,7 @@ for x in Ndf.columns:
                   if rpnum2 > repeat[rpnum1][-1]:
                         rpnum2 = 0
                         
-                  Ndf.iloc[y+1][x] = Ndf.iloc[repeat[rpnum1][rpnum2]][a]
+                  Ndf.iloc[y+1][x] = Ndf.iloc[repeat[rpnum1][rpnum2]][x]
             
             rpnum2 += 1
             
