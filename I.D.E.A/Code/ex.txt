@@ -26,12 +26,12 @@ rp(l, col)
       repeat(len(numr)=2):
       
       1st
-      varl = 1
+      varl = (nums[0]=)1
       k = [1]
-      2 != 0:
+      (numr[0] - 1=)2 != 0:
 	
             1st
-	      varl = 2
+	      varl = (nums[1]=)2
 	      k = [1, 2]
 	
 	      2nd
@@ -41,9 +41,9 @@ rp(l, col)
       numu = [1, 2, 3]
 
       2nd\n
-      varl = 5
+      varl = (nums[1]=)5
       k = [5]
-      0 == 0
+      (numr[1] - 1=)0 == 0
 
       numu = [[1, 2, 3,], [5]]
 
@@ -53,20 +53,14 @@ ex)
       1 o A
       2 o B
       3 o 
-      4 o   
-      5 o 
-      6 x 
-      7 o C
-      8 o
-      9 x
+      4 x
+      5 o c
+      6 x
 
   =>  0 x  
       1 o A
       2 o B
-      3 o A
-      4 o B  
-      5 o A
-      6 x 
-      7 o C
-      8 o C
-      9 x  
+      3 o A  
+      4 x
+      5 o c
+      6 x
