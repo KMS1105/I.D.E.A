@@ -6,7 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 model = SentenceTransformer('sentence-transformers/xlm-r-100langs-bert-base-nli-stsb-mean-tokens')
 
-df = pd.read_csv('C:/Users/user/Desktop/Coding/Python/python_AI/I.D.E.A/I.D.E.A-main/I.D.E.A-main/I.D.E.A/데이터셋/02)웰니스_대화_스크립트_데이터셋.csv')
+df = pd.read_csv('C:/Users/12612/OneDrive/바탕 화면/학교/I.D.E.A/데이터셋/02)웰니스_대화_스크립트_데이터셋.csv')
 df = df.drop(columns=['임상질문그룹(연세의료원제공)', 'utterance(긍정)', 'utterance(부정)', '긍정에 대한 챗봇 답변', '부정에 대한 챗봇 답변', '추가발화(190917)', '추가발화 (191031)'])
 df = df[~df['response(공감)'].isna()]
 
@@ -21,6 +21,7 @@ Ndf = pd.concat([df.iloc[:0], Nrow, df.iloc[0:]], ignore_index=True)
 Ndf = pd.concat([Nrow], ignore_index=True)
 
 def rp(l, col):
+      n = None
       nums = []
       nume = []
       numr = []
@@ -28,10 +29,10 @@ def rp(l, col):
       
       #항 묶음 구하기
       for a in range(len(l.index)):
-            if (l[a][l.columns[col]] != None) & (l[a+1][l.columns[col]] == None):
+            if (l.iloc[a, l.columns[col]].isna() == False) & (l.iloc[a+1, l.columns[col]].isna() == True):
                   nums.append(a)
                         
-            if (l[a][l.columns[col]] == None) & (l[a+1][l.columns[col]] != None):
+            if (l.iloc[a, l.columns[col]].isna() == True) & (l.iloc[a+1, l.columns[col]].isna == False):
                   nume.append(a)
 
       #항 개수 구하기               
