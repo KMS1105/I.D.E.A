@@ -54,7 +54,7 @@ def rp(l, col):
                   
             return numu
 
-#print(Ndf)
+print(Ndf)
 columns = ['핵심증상', 'intent', 'keyword(임상키워드)', '연관표현', 'response(공감)']
 print(columns)
 
