@@ -38,31 +38,34 @@ def rp(l, col):
             numr.append(vnum)
       
       print("numr: "+str(numr))
-            
+
       #항 구하기
       for c in range(len(numr)):
             k = []
-            varl = nums[c] + 1
-            k.append(varl)
-            
-            if numr[c] - 1 != 0:
-                  for i in range(numr[c] - 1):
-                        varl += 1
-                        k.append(varl)
-                        
+
+            for d in range(numr[c]):
+                  varl = (nums[c]+d+1)
+                  k.append(varl)
+
             numu.append(k)
-                  
-            return numu
+
+      #print("numu: ",numu)
+
+      return numu
 
 print(Ndf)
 columns = ['핵심증상', 'intent', 'keyword(임상키워드)', '연관표현', 'response(공감)']
 print(columns)
+f = open("t.txt","wt")
 
 #묶음행에 빈칸이 있는 경우 다음 묶음행 전까지 묶음행을 반복해서 넣기
 for x in range(len(columns)):
       repeat = rp(Ndf, x)
       rpnum1 = 0
-      print("rp(Ndf, x): "+str(repeat))
+      lines = ["rp(Ndf, x): ",str(repeat),"\n"]
+      f.writelines(lines)
+
+      #print("rp(Ndf, x): "+str(repeat),"\n")
       
       """for y in range(len(Ndf.index)):
             rpnum2 = 0
@@ -79,3 +82,4 @@ for x in range(len(columns)):
             
             rpnum2 += 1"""
             
+f.close
