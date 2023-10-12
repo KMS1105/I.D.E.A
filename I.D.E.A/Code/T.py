@@ -44,7 +44,7 @@ def rp(l, col):
             k = []
 
             for d in range(numr[c]):
-                  varl = (nums[c]+d+1)
+                  varl = (nums[c]+d)
                   k.append(varl)
 
             numu.append(k)
