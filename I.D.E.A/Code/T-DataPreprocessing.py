@@ -56,30 +56,41 @@ def rp(l, col):
 print(Ndf)
 columns = ['핵심증상', 'intent', 'keyword(임상키워드)', '연관표현', 'response(공감)']
 print(columns)
-f = open("t.txt","wt")
+f = open("rpnum.txt","wt")
 
 #묶음행에 빈칸이 있는 경우 다음 묶음행 전까지 묶음행을 반복해서 넣기
 for x in range(len(columns)):
       repeat = rp(Ndf, x)
-      rpnum1 = 0
-      lines = ["rp(Ndf, x): ",str(repeat),"\n"]
-      f.writelines(lines)
+      rpnum1 = 0 #밖 순차
+      rpnum2 = -1 #안 순차
 
       #print("rp(Ndf, x): "+str(repeat),"\n")
       
-      """for y in range(len(Ndf.index)):
-            rpnum2 = 0
-            
-            if y == repeat[rpnum1+1][0]:
-                  if rpnum1 <= len(repeat)-1:
-                        rpnum1 += 1
+      for y in range(len(Ndf.index)):
+            if rpnum1 < len(repeat)-1:
+                  if (y == repeat[rpnum1+1][0]): #밖 다음 순차
+                    rpnum1 += 1
+                    rpnum2 = -1
+                            
+                  if Ndf.iloc[y+1][x] == 0:
+                        rw = int(y+1)
+                        Nrw = int(repeat[rpnum1][rpnum2])
+
+                        Ndf.iloc[rw][x] = Ndf.iloc[Nrw][x]
                         
-            if Ndf.iloc[y+1][x] == None:
-                  if rpnum2 > repeat[rpnum1][-1]:
-                        rpnum2 = 0
+                        if repeat[rpnum1][rpnum2] == repeat[rpnum1][-1]:
+                              rpnum2 = 0
                         
-                  Ndf.iloc[y+1][x] = Ndf.iloc[repeat[rpnum1][rpnum2]][x]
+                        e = repeat[rpnum1][-1] 
+                        s = repeat[rpnum1][0]
+                        if (e - s) != 0: #안 다음 순차
+                              rpnum2 += 1
             
-            rpnum2 += 1"""
-            
+            print("rpnum1:",rpnum1)
+            print("rpnum2:",rpnum2,"\n")
+            lines = ["rpnum1:",str(rpnum1),"\nrpnum2:",str(rpnum2),"\n\n"]
+            f.writelines(lines)
+     
+print(Ndf)
+Ndf.to_csv("C:/Users/user/Desktop/Coding/Python/python_AI/I.D.E.A/I.D.E.A-main/I.D.E.A-main/I.D.E.A/데이터셋/Nndf.csv", index=False)
 f.close
