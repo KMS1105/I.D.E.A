@@ -1,13 +1,15 @@
 import pandas as pd
 import streamlit as st
-from streamlit_chat import message
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
 model = SentenceTransformer('sentence-transformers/xlm-r-100langs-bert-base-nli-stsb-mean-tokens')
-
-df = pd.read_csv('C:/Users/user/Desktop/Coding/Python/python_AI/I.D.E.A/I.D.E.A-main/I.D.E.A-main/I.D.E.A/데이터셋/Nndf.csv')
+print("데이터셋 파일 경로 예시\nC:/Users/user/Desktop/Coding/Python/python_AI/I.D.E.A/I.D.E.A-main/I.D.E.A-main/I.D.E.A/데이터셋/Nndf.csv\n[[\를 /로 바꿔줘야 합니다.]]") 
+fpath = input("데이터셋 파일 경로: ")
+df = pd.read_csv(fpath)
 df['embedding'] = df['utterance(2차)'].map(lambda x: list(model.encode(x)))
+
+print("전처리 과정에서 데이터가 많이 삭제되어 정확도가 높진 않습니다.")
 
 while True:
     text = input("In: ")
