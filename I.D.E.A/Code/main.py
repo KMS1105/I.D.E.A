@@ -7,9 +7,7 @@ model = SentenceTransformer('sentence-transformers/xlm-r-100langs-bert-base-nli-
 print("데이터셋 파일 경로 예시\nC:/Users/user/Desktop/Coding/Python/python_AI/I.D.E.A/I.D.E.A-main/I.D.E.A-main/I.D.E.A/데이터셋/Nndf.csv\n[[\를 /로 바꿔줘야 합니다.]]") 
 fpath = input("데이터셋 파일 경로: ")
 df = pd.read_csv(fpath)
-df['embedding'] = df['utterance(2차)'].map(lambda x: list(model.encode(x)))
-
-print("정확도가 높진 않습니다.")
+df['embedding'] = df['utterance(2차)'].map(lambda x: list(model.encode(x)))
 
 while True:
     text = input("In: ")
