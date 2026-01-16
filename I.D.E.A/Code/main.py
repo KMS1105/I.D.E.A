@@ -9,7 +9,7 @@ fpath = input("데이터셋 파일 경로: ")
 df = pd.read_csv(fpath)
 df['embedding'] = df['utterance(2차)'].map(lambda x: list(model.encode(x)))
 
-print("전처리 과정에서 데이터가 많이 삭제되어 정확도가 높진 않습니다.")
+print("정확도가 높진 않습니다.")
 
 while True:
     text = input("In: ")
